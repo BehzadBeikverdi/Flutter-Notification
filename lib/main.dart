@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:local_notification/home.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterDownloader.initialize();
   runApp(const MyApp());
 }
 
