@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:local_notification/second_screen.dart';
-import 'notify.dart';
-
+import 'package:local_notification/home.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
@@ -43,7 +41,7 @@ class _MyAppState extends State<MyApp> {
     return const MaterialApp(
       // title: 'Flutter Notify',
       debugShowCheckedModeBanner: false,
-      home: Notify(),
+      home: Home()
     );
   }
 }

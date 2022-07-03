@@ -1,24 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:local_notification/second_screen.dart';
-
 import 'main.dart';
 
-class Notify extends StatefulWidget {
-  const Notify({Key? key}) : super(key: key);
+class NotifyDownload extends StatefulWidget {
+  const NotifyDownload({Key? key}) : super(key: key);
 
   @override
-  State<Notify> createState() => _NotifyState();
+  State<NotifyDownload> createState() => _NotifyDownloadState();
 }
 
-class _NotifyState extends State<Notify> {
-
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
-
-  // GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
-  // final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
+class _NotifyDownloadState extends State<NotifyDownload> {
 
   FlutterLocalNotificationsPlugin? localNotifications;
 
@@ -35,7 +27,7 @@ class _NotifyState extends State<Notify> {
     );
 
     var initializationSettings = InitializationSettings(
-      android: androidInitialize, iOS: iOSInitialize
+        android: androidInitialize, iOS: iOSInitialize
     );
 
     localNotifications = FlutterLocalNotificationsPlugin();
@@ -58,25 +50,25 @@ class _NotifyState extends State<Notify> {
 
   Future showNotification() async{
     var androidDetails = const AndroidNotificationDetails("android_channel_id", "Local notifications",
-        playSound: true,
-        importance: Importance.max,
-        // priority: Priority.max,
-        fullScreenIntent: true,
-        enableLights: true,
-        enableVibration: true,
-        // groupAlertBehavior: GroupAlertBehavior.all,
-        // visibility: NotificationVisibility.public,
-        // category: "Importance",
-        // ticker: "Ticker",
-        ongoing: true,
-        // setAsGroupSummary: true,
-        // showProgress: true,
-        showWhen: true,
-        // progress: 10,
-        // usesChronometer: true,
-        indeterminate: true,
-        styleInformation: BigTextStyleInformation(''),
-        // sound: RawResourceAndroidNotificationSound('arrive')
+      playSound: true,
+      importance: Importance.max,
+      // priority: Priority.max,
+      fullScreenIntent: true,
+      enableLights: true,
+      enableVibration: true,
+      // groupAlertBehavior: GroupAlertBehavior.all,
+      // visibility: NotificationVisibility.public,
+      // category: "Importance",
+      // ticker: "Ticker",
+      ongoing: true,
+      // setAsGroupSummary: true,
+      // showProgress: true,
+      showWhen: true,
+      // progress: 10,
+      // usesChronometer: true,
+      indeterminate: true,
+      styleInformation: BigTextStyleInformation(''),
+      // sound: RawResourceAndroidNotificationSound('arrive')
     );
 
     var iOSDetails =  const IOSNotificationDetails(presentSound: true);
@@ -97,11 +89,12 @@ class _NotifyState extends State<Notify> {
     await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) =>
-          const SecondScreen()),);
+      const SecondScreen()),);
     // navigatorKey.currentState?.push(
     //     MaterialPageRoute(builder: (context) => const SecondScreen())
     // );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -109,11 +102,11 @@ class _NotifyState extends State<Notify> {
       appBar: AppBar(title: const Text('Flutter Notify'), centerTitle: true,),
       body: Center(
         child: RaisedButton.icon(
-            onPressed: () {
-              showNotification();
-            },
-            label: const Text("Click here to receive notify"),
-            icon: const Icon(Icons.notifications_active),
+          onPressed: () {
+            showNotification();
+          },
+          label: const Text("Click here to download pdf"),
+          icon: const Icon(Icons.cloud_download),
         ),
       ),
     );
